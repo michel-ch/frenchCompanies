@@ -11,8 +11,6 @@ An interactive web application for exploring and visualizing French businesses a
 
 ## Screenshots
 
-_(Add your application screenshots here by replacing or creating the images in a `docs/` folder)_
-
 ![Map View](docs/map-view.png)
 _Interactive map view showing business clusters and heatmaps._
 
