@@ -12,7 +12,8 @@ An interactive web application for exploring and visualizing French businesses a
 ## Screenshots
 
 ![Map View](docs/map-view.png)
-_Interactive map view showing business clusters._
+
+![Map View](docs/map-view-paris.png)
 
 ## The Stack
 
