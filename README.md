@@ -12,10 +12,7 @@ An interactive web application for exploring and visualizing French businesses a
 ## Screenshots
 
 ![Map View](docs/map-view.png)
-_Interactive map view showing business clusters and heatmaps._
-
-![Filtering Options](docs/filtering.png)
-_Filtering businesses by NAF codes and classifications._
+_Interactive map view showing business clusters._
 
 ## The Stack
 
