@@ -37,6 +37,10 @@ export interface EstablishmentParams {
   city?: string;
   is_active?: boolean;
   is_employer?: boolean;
+  is_headquarter?: boolean;
+  workforce_bracket?: string;
+  creation_date_from?: string;
+  creation_date_to?: string;
   bbox?: string;
   limit?: number;
   offset?: number;

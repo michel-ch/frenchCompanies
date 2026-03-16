@@ -5,7 +5,7 @@ import { useMapStore, useFilterStore } from './useMapViewport';
 export function useEstablishments() {
   const bbox = useMapStore((s) => s.bbox);
   const zoom = useMapStore((s) => s.zoom);
-  const { nafCodes, postalCode, communeCode, city } = useFilterStore();
+  const { nafCodes, postalCode, communeCode, city, isHeadquarter, isEmployer, workforceBracket, creationDateFrom, creationDateTo } = useFilterStore();
 
   const params = {
     bbox: bbox || undefined,
@@ -14,11 +14,16 @@ export function useEstablishments() {
     commune_code: communeCode || undefined,
     city: city || undefined,
     is_active: true,
+    is_employer: isEmployer,
+    is_headquarter: isHeadquarter,
+    workforce_bracket: workforceBracket || undefined,
+    creation_date_from: creationDateFrom || undefined,
+    creation_date_to: creationDateTo || undefined,
     limit: 2000,
   };
 
   // Only fetch if we have a bbox or filters
-  const hasFilters = bbox || nafCodes.length > 0 || postalCode || communeCode || city;
+  const hasFilters = bbox || nafCodes.length > 0 || postalCode || communeCode || city || isHeadquarter !== undefined || isEmployer !== undefined || workforceBracket || creationDateFrom || creationDateTo;
 
   return useQuery({
     queryKey: ['establishments', params],
@@ -31,7 +36,7 @@ export function useEstablishments() {
 
 export function useEstablishmentCount() {
   const bbox = useMapStore((s) => s.bbox);
-  const { nafCodes, postalCode, communeCode, city } = useFilterStore();
+  const { nafCodes, postalCode, communeCode, city, isHeadquarter, isEmployer, workforceBracket, creationDateFrom, creationDateTo } = useFilterStore();
 
   const params = {
     bbox: bbox || undefined,
@@ -40,9 +45,14 @@ export function useEstablishmentCount() {
     commune_code: communeCode || undefined,
     city: city || undefined,
     is_active: true,
+    is_employer: isEmployer,
+    is_headquarter: isHeadquarter,
+    workforce_bracket: workforceBracket || undefined,
+    creation_date_from: creationDateFrom || undefined,
+    creation_date_to: creationDateTo || undefined,
   };
 
-  const hasFilters = bbox || nafCodes.length > 0 || postalCode || communeCode || city;
+  const hasFilters = bbox || nafCodes.length > 0 || postalCode || communeCode || city || isHeadquarter !== undefined || isEmployer !== undefined || workforceBracket || creationDateFrom || creationDateTo;
 
   return useQuery({
     queryKey: ['establishments-count', params],

@@ -30,6 +30,11 @@ interface FilterState {
   radiusKm: number;
   displayMode: DisplayMode;
   analysisCenter: { lat: number; lng: number } | null;
+  isHeadquarter: boolean | undefined;
+  isEmployer: boolean | undefined;
+  workforceBracket: string;
+  creationDateFrom: string;
+  creationDateTo: string;
 
   setNafCodes: (codes: string[]) => void;
   addNafCode: (code: string, label: string) => void;
@@ -41,6 +46,11 @@ interface FilterState {
   setRadiusKm: (km: number) => void;
   setDisplayMode: (mode: DisplayMode) => void;
   setAnalysisCenter: (center: { lat: number; lng: number } | null) => void;
+  setIsHeadquarter: (val: boolean | undefined) => void;
+  setIsEmployer: (val: boolean | undefined) => void;
+  setWorkforceBracket: (bracket: string) => void;
+  setCreationDateFrom: (date: string) => void;
+  setCreationDateTo: (date: string) => void;
 }
 
 export const useFilterStore = create<FilterState>((set) => ({
@@ -52,6 +62,11 @@ export const useFilterStore = create<FilterState>((set) => ({
   radiusKm: 5,
   displayMode: 'markers',
   analysisCenter: null,
+  isHeadquarter: undefined,
+  isEmployer: undefined,
+  workforceBracket: '',
+  creationDateFrom: '',
+  creationDateTo: '',
 
   setNafCodes: (codes) => set({ nafCodes: codes }),
   addNafCode: (code, label) =>
@@ -70,4 +85,9 @@ export const useFilterStore = create<FilterState>((set) => ({
   setRadiusKm: (km) => set({ radiusKm: km }),
   setDisplayMode: (mode) => set({ displayMode: mode }),
   setAnalysisCenter: (center) => set({ analysisCenter: center }),
+  setIsHeadquarter: (val) => set({ isHeadquarter: val }),
+  setIsEmployer: (val) => set({ isEmployer: val }),
+  setWorkforceBracket: (bracket) => set({ workforceBracket: bracket }),
+  setCreationDateFrom: (date) => set({ creationDateFrom: date }),
+  setCreationDateTo: (date) => set({ creationDateTo: date }),
 }));

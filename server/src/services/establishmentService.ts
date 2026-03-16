@@ -8,6 +8,10 @@ export interface EstablishmentFilters {
   city?: string;
   is_active?: boolean;
   is_employer?: boolean;
+  is_headquarter?: boolean;
+  workforce_bracket?: string;
+  creation_date_from?: string; // YYYY-MM-DD
+  creation_date_to?: string;   // YYYY-MM-DD
   bbox?: string; // "minLng,minLat,maxLng,maxLat"
   limit?: number;
   offset?: number;
@@ -53,6 +57,26 @@ function buildWhereClause(filters: EstablishmentFilters): { where: string; param
   if (filters.is_employer !== undefined) {
     conditions.push(`is_employer = $${paramIdx++}`);
     params.push(filters.is_employer);
+  }
+
+  if (filters.is_headquarter !== undefined) {
+    conditions.push(`is_headquarter = $${paramIdx++}`);
+    params.push(filters.is_headquarter);
+  }
+
+  if (filters.workforce_bracket) {
+    conditions.push(`workforce_bracket = $${paramIdx++}`);
+    params.push(filters.workforce_bracket);
+  }
+
+  if (filters.creation_date_from) {
+    conditions.push(`creation_date >= $${paramIdx++}`);
+    params.push(filters.creation_date_from);
+  }
+
+  if (filters.creation_date_to) {
+    conditions.push(`creation_date <= $${paramIdx++}`);
+    params.push(filters.creation_date_to);
   }
 
   if (filters.bbox) {

@@ -3,6 +3,7 @@ import { LocationSearch } from './LocationSearch';
 import { RadiusSlider } from './RadiusSlider';
 import { ActiveFilters } from './ActiveFilters';
 import { DisplayModeToggle } from './DisplayModeToggle';
+import { AdvancedFilters } from './AdvancedFilters';
 
 export function FilterPanel() {
   return (
@@ -17,6 +18,10 @@ export function FilterPanel() {
       <section>
         <h3 className="text-sm font-semibold text-gray-700 mb-2">Location</h3>
         <LocationSearch />
+      </section>
+
+      <section>
+        <AdvancedFilters />
       </section>
 
       <section>
